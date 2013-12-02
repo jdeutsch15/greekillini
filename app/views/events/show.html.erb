@@ -1,0 +1,45 @@
+<p id="notice"><%= notice%></p>
+
+<p>
+	<b>Name:</b>
+	<%= @event.name %>
+</p>
+
+<p>
+	<b>Location:</b>
+	<%= @event.location%>
+</p>
+<p>
+	<b>Description:</b>
+	<%= @event.description %>
+</p>
+<p>
+	<b>Type:</b>
+	<%= @event.event_type %>
+</p>
+
+<table id="houses_attending">
+	<th>Houses Attending</th>
+	
+	<% @event.houses.each do |house| %>
+	<tr>
+		<td><%= link_to house.name, house %></td>
+	</tr>
+	<%end%>
+</table>
+<br/>
+<%if current_student.role=="social_chair" then %>
+<% if @event.host_id == current_student.house_id%>
+	<%= form_for Invitation.new, :remote => :true do |f| %>
+	<%= f.label :house_id, "Invite House" %> <br />
+		<%= f.select :house_id, options_from_collection_for_select(House.all, :id, :name) %><br />
+		<%= f.hidden_field :event_id, :value => @event.id%><br />
+		<%=f.submit "Invite House To Event" %>
+		<%end%>
+<%end%>
+<%end%>
+
+<br/>
+<br/>
+
+

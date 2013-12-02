@@ -1,0 +1,28 @@
+
+<class="nav">
+  <% if student_signed_in? %>
+  <%= link_to current_student.capitalize_name, student_path(current_student.id) %>
+  <span id= "nav_log_out">
+    
+    <%= link_to 'Logout', destroy_student_session_path, :method=>'delete' %>
+    
+  </span>
+
+  <% end %>
+  <% if student_signed_in? %>
+
+    <span id= "nav_edit_account">
+   
+    <%= link_to 'Edit account', edit_student_registration_path %>
+    
+    </span>
+   
+    
+  
+  <% else %>
+    <span id = "nav_sign_up">
+   
+    <%= link_to 'Sign up', new_student_registration_path %>
+    
+  </span>
+  <% end %>

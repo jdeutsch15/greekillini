@@ -1,0 +1,6 @@
+console.log("look for")
+$("#javascript").html("Please Refresh To Update Message Board!")
+$("#messages").css('padding','4px').css('color','black').css('text-align','left').prepend("<li><%=@message.content%> Posted  <%= time_ago_in_words(@message.created_at) %> ago. <%=j link_to "message", @message%> <%=j link_to "delete", @message, method: :delete, data: {confirm: "Are You Sure?"}%></li>")
+
+$("#text").val('')
+console.log("look again")

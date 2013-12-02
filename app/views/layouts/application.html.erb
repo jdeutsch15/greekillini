@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FirstApp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application.js" %>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+
+  <body class="<%= controller_name %> <%= action_name %>">
+    <div id="container" class="container">
+      <header>
+        <ul id="nav_whole">
+
+        <li id= "nav_whole_left"> 
+          <ul id="nav_left">
+            <li id="title">GREEKILLINI</li>
+             <li id="nav_messageboard"><%= link_to "message board", messages_path %>
+             </li>
+              <li id="nav_houses">
+            <%= link_to "houses", houses_path %>
+             </li>
+         </ul>
+      </li>
+      <li id="nav_whole_right">
+        <ul id="nav_right">
+          <li id="nav_messages">
+         <%= render 'layouts/messages' %>
+           </li>
+           <li id="nav_signing">
+           <%= render 'layouts/navigation' %>
+          </li>
+      
+       </ul>
+     </li>
+   </ul>
+      </header>
+      <div id="main" role="main">
+        <%= yield %>
+      </div>
+
+      <footer>
+
+      </footer>
+    </div> <!--! end of #container -->
+  </body>
+</html>

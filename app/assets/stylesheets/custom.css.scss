@@ -1,0 +1,298 @@
+@import "bootstrap";
+
+#main{
+padding-top:10px;
+}
+
+
+
+.form
+{
+line-height:0%;
+}
+.eventlinks
+{text-align:left;}
+
+.links 
+{text-align:right;}
+
+
+
+header
+{
+height:120px;
+width:100%;
+
+background-color:#F05A28;
+
+float: left;
+
+}
+
+
+
+.button
+{
+  display: block;
+  float: right;      
+  background: orange;
+}
+
+.button:hover
+
+{
+  background: orange;
+}
+
+
+#nav_whole
+{
+
+  list-style-type:none;
+
+
+}
+
+#header_left
+{
+  list-style-type:none;
+  float: left;
+  position:relative;
+}
+
+
+#nav_whole li 
+{
+
+display: inline-block; 
+
+}
+
+
+#header_left li 
+{
+
+display: inline-block; 
+
+}
+
+
+#header_right
+{
+
+    position:relative;
+     
+
+}
+
+
+#header_right_top li
+{
+ display: inline-block;
+}
+
+#header_left_top li
+{
+
+ display: inline-block;
+}
+
+#nav_whole li a
+{
+
+width: 5em;
+color: #fff;
+}
+
+
+#nav_whole_left li a
+{
+width: 5em;
+color: #fff;
+padding: 0 0 0 10px;
+}
+
+#nav_whole_right li a
+{
+  width: 5em;
+color: #fff;
+padding: 0 0 0 10px;
+}
+
+#devise_whole_right li a
+{
+ 
+  width: 5em;
+color: #fff;
+padding: 0 0 0 10px;
+}
+
+#nav_left
+{
+
+  list-style-type:none;
+  
+}
+
+#nav_right
+{
+  list-style-type:none;
+  padding-left:20em;
+}
+
+#devise_right
+{
+  list-style-type:none;
+  
+  padding-left:20em;
+}
+
+
+#devise_right_right
+{
+  list-style-type:none;
+  padding-left:20em;
+
+
+}
+
+#nav_left li { display: inline; }
+
+#nav_right li { display: inline; }
+
+
+
+#title{
+width:100%;
+font-size:120%;
+
+color:white;
+
+
+}
+
+#nav_messageboard
+{
+width:100%;
+
+
+
+
+}
+
+
+
+#invite
+{
+font-weight:bold;
+}
+
+
+
+#messagesheader{
+  text-align:center;
+  font-weight:bold;
+  font-size:40px;
+  padding-top:50px;
+  padding-bottom:30px;
+}
+
+#messagebox{
+  text-align:center;
+}
+
+#housename{
+font-weight:bold;
+text-align:center;
+font-size:40px;
+}
+
+#housetype{
+text-align:right;
+font-size:15px;
+}
+
+.messages
+{
+border:solid 1px black; 
+
+color:black;
+padding:4px;
+text-align:left;
+}
+.title{font-weight:bold;
+font-size:150%;
+}
+table {
+  font: 100% sans-serif;
+ background-color:#F05A28;
+  border-collapse: collapse;
+  empty-cells:show;
+  border: 1px solid black;
+}
+
+table > caption {
+  text-align: left;
+  font-weight: bold;
+  font-size: 200%;
+  border-bottom: .2em solid #4ca;
+  margin-bottom: .5em;
+}
+
+
+/* basic shared rules */
+table th,
+table td {
+  text-align: center;
+  padding-right: .5em;
+}
+
+table th {
+  font-weight: bold;
+  padding-left: .5em;
+}
+
+
+/* header */
+table > thead > tr:first-child > th {
+  text-align:left;
+  color: blue;
+}
+
+table > thead > tr + tr > th {
+  font-style: italic;
+  color: gray;
+}
+
+/* fix size of superscript */
+table sup {
+  font-size: 75%;
+}
+
+/* body */
+table td {
+  background-color: #def;
+  padding:2em 5em 1em 2em;
+}
+
+
+
+/* footer */
+table tfoot {
+  font-weight: bold;
+}
+
+table tfoot th {
+  color: blue;
+}
+
+
+
+table > tfoot td {
+ background-color:#F05A28;
+}
+
+table > tfoot > tr:first-child td {
+  border-top: .2em solid #7a7;
+}
+

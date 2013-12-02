@@ -1,0 +1,27 @@
+<h1>Listing Houses</h1>
+<%if (@houses) then%>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>House Type</th>
+  
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @houses.each do |house| %>
+  <tr>
+    <td><%= link_to house.name, house %></td>
+    <td><%= house.house_type %></td>
+    <div class="links">
+   
+    <% if current_student.role=="admin" then%>
+    <td><%= link_to 'Edit', edit_house_path(house) %></td>
+    <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td></div>
+    <%end%>
+  </tr>
+<% end %>
+<% end %>
+</table>

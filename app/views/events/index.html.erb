@@ -1,0 +1,8 @@
+<h1>Listing events</h1>
+<%if (@events) then%>
+
+<%= calendar @events do |event| %>
+  <div> <%=link_to event.name, event %></div>
+<% end %>
+<% end %>
+</table>

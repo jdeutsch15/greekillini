@@ -1,0 +1,226 @@
+  <p id="notice"><%= notice %></p>
+
+
+	<p>
+<div id="housename">
+  <%= @house.name %>
+  </div>
+</p>
+
+
+
+<p>
+<div id="housetype">
+  <%= @house.house_type %>
+</div>
+</p>
+
+<br>
+<br>
+<br>
+<p><b><%=@house.name%> Roster</b></p>
+<div id ="accordion">
+	<h3>2013</h3>
+	<div>
+	<table id= "roster">
+	<tr>
+
+		<th>Name</th>
+		<th>Email</th>
+		<th>Gender</th>
+		<th>Pledge Class</th>
+	</tr>
+	
+	<% @house.students.each do |student| %>
+	<% if student.pledge_class=="2013" then %>
+	<tr>
+		<td><%= student.capitalize_name%></td>
+		<td><%= student.email%></td>
+		<td><%= student.gender%></td>
+		<td><%= student.pledge_class%></td>
+		 <div class="links"><td><%= link_to 'View Person', student_path(student) %></td></div>
+	</tr>
+	<%end%>
+	<% end %>
+</table>
+</div>
+<h3>2014</h3>
+<div>
+	<table id= "roster">
+	
+	<tr>
+
+		<th>Name</th>
+		<th>Email</th>
+		<th>Gender</th>
+		<th>Pledge Class</th>
+	</tr>
+	<% @house.students.each do |student| %>
+	<% if student.pledge_class=="2014" then %>
+	<tr>
+		<td><%= student.capitalize_name%></td>
+		<td><%= student.email%></td>
+		<td><%= student.gender%></td>
+		<td><%= student.pledge_class%></td>
+		 <div class="links"><td><%= link_to 'View Person', student_path(student) %></td></div>
+	</tr>
+	<% end %>
+	<% end %>
+</table>
+</div>
+<h3>2015</h3>
+<div>
+	<table id= "roster">
+	
+	<tr>
+
+		<th>Name</th>
+		<th>Email</th>
+		<th>Gender</th>
+		<th>Pledge Class</th>
+	</tr>
+	<% @house.students.each do |student| %>
+	<% if student.pledge_class=="2015" then %>
+	<tr>
+		<td><%= student.capitalize_name%></td>
+		<td><%= student.email%></td>
+		<td><%= student.gender%></td>
+		<td><%= student.pledge_class%></td>
+		 <div class="links"><td><%= link_to 'View Person', student_path(student) %></td></div>
+	</tr>
+	<% end %>
+	<% end %>
+</table>
+</div>
+<h3>2016</h3>
+<div>
+	<table id= "roster">
+	
+	<tr>
+
+		<th>Name</th>
+		<th>Email</th>
+		<th>Gender</th>
+		<th>Pledge Class</th>
+	</tr>
+	<% @house.students.each do |student| %>
+	<% if student.pledge_class=="2016" then %>
+	<tr>
+		 <div class="links"><td><%= link_to student.capitalize_name, student_path(student) %></td></div>
+		<td><%= student.email%></td>
+		<td><%= student.gender%></td>
+		<td><%= student.pledge_class%></td>
+		
+	</tr>
+	<% end %>
+	<% end %>
+</table>
+</div>
+<h3>2017</h3>
+<div>
+	<table id= "roster">
+	
+	<tr>
+
+		<th>Name</th>
+		<th>Email</th>
+		<th>Gender</th>
+		<th>Pledge Class</th>
+	</tr>
+	<% @house.students.each do |student| %>
+	<% if student.pledge_class=="2017" then %>
+	<tr>
+		<td><%= student.capitalize_name%></td>
+		<td><%= student.email%></td>
+		<td><%= student.gender%></td>
+		<td><%= student.pledge_class%></td>
+		 <div class="links"><td><%= link_to 'View Person', student_path(student) %></td></div>
+	</tr>
+	<% end %>
+	<% end %>
+</table>
+</div>
+</div>
+<br />
+
+<table id= "invitations">
+	<% if current_student.house==@house then %>
+	<th>Pending Invitations</th>
+	<tr>
+
+		<th>Event</th>
+		<th>Response</th>
+	</tr>
+	<% @house.invitations.each do |invitation| %>
+	<tr>
+		 <div class="links"><td><%= link_to invitation.event.name, invitation.event%></td></div>
+		<td><%= invitation.response%></td>
+		
+		 <div class="links"><td><%= link_to 'View Invitation', invitation_path(invitation) %></td></div>
+		<%if current_student.role == "social_chair" then %>
+		<td><%= form_for invitation, :remote => true do |f|%>
+			<%= f.label :response, "Response"%><br/>
+			<%=f.select :response, ["Yes", "No"]%>
+			<%=f.submit "Respond to invite"%>
+			
+			<%end%>
+			<%end%>
+		</td>
+	</tr>
+	<%end%>
+	
+	<%end%>
+</table>
+
+<br>
+<br>
+<table id="events">
+	<th>Event Information</th>
+	
+	<%= calendar @house.events do |event| %>
+	<%if @house==current_student.house then%>
+   <div class="eventlinks"><div> <%=link_to event.name, event %></div></div>
+  <div><%= event.start_time.time.to_s(:time) %></div>
+<%else%>
+ <div class="eventlinks"><div> Unavailable</div></div>
+  <div><%= event.start_time.time.to_s(:time)   %></div>
+<%end%>
+<%end%>
+	</table>
+	<% if current_student.house==@house then %>
+	<% if current_student.role=="social_chair" then%>
+	<div class="form">
+	<%= form_for Event.new, :remote => true do|f| %>
+		<%=f.label :name, "Name" %><br />
+		<%=f.text_field :name, :id => "name" %><br />
+		<%=f.label :location, "Location" %><br />
+		<%=f.text_field :location, :id => "location" %><br />
+		<%=f.label :description, "Description" %><br />
+		<%=f.text_field :description, :id => "description"%><br />
+		<%=f.label :start_time, "Date"%><br />
+		<%=f.date_select :start_time %><br />
+		<%=f.label :start_time, "Time"%><br />
+		<%=f.time_select :start_time, :ignore_date => true %><br />
+		<%=f.label :event_type, "Type" %><br />
+		<%=f.select :event_type, ["Pregame", "Exchange", "Philanthropy"]%><br />
+		<%= f.hidden_field :house_id, :value => @house.id %><br />
+	
+		<br>
+		<%= f.submit "Add Event" %>
+	<%end%>
+</div>
+	<%end%>
+	<%end%>
+
+	<br>		
+	<br>
+	<br>
+	
+
+
+<script>
+  $(function() {
+    $( "#accordion" ).accordion();
+  });
+  </script>
+

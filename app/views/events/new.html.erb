@@ -1,0 +1,8 @@
+<h1>New Event</h1>
+<% if current_student.role=="social_chair" then%>
+<%= render 'form' %>
+<%else%>
+<%="You Are Not A Social Chair!"%>
+<%end%><br/>
+
+<%= link_to 'back', house_path(current_student.house_id)%>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Event:</b>
+  <%= @invitation.event.name %>
+</p>
+
+
+
+<p>
+  <b>Response:</b>
+  <% unless @invitation.response.nil? then%>
+  <%= @invitation.response %>
+  <%else%>
+  Please Respond
+  <%end%>
+</p>
+<%if current_student.role=="social_chair" then %>
+<% if current_student.house_id == @invitation.house_id then %>
+  <%=form_for @invitation, :remote => true do|f|%>
+  <%=f.select :response, ["Yes", "No"] %><br/>
+  <%=f.submit "Respond" %>
+<%end%>
+<%end%>
+<%end%>
+<br/>
+<br/>
+<br/>
+
+<% if current_student.house_id == @invitation.house_id then %>
+  <%=button_to "Would Attend", action: "attending" %>
+   <%=button_to "Would Not Attend", action: "not_attending" %>
+<%end%>
+attending: <%=@invitation.up_votes%> <br/>
+not attending: <%=@invitation.down_votes%>

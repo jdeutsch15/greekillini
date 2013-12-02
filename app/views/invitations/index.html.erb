@@ -1,0 +1,22 @@
+<h1>Listing Invitations</h1>
+<%if @invitations then %>
+<table>
+  <tr>
+    <th>Event</th>
+    <th>Response</th>
+  
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @invitations.each do |invitation| %>
+  <tr>
+    <td><%= invitation.event.name %></td>
+    <td><%= invitation.response %></td>
+    <div class="links"> <td><%= link_to 'Show', invitation %></td></div>
+
+  </tr>
+<% end %>
+<% end %>
+</table>
