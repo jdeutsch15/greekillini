@@ -1,0 +1,156 @@
+#main{
+  width:850px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:0px;
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+
+
+#housename{
+  width:100%;
+  text-align:center;
+  font-size:35px;
+  color:#007AA5;
+  margin-top:20px;
+}
+
+#house-page-container{
+  margin-top:40px;
+  padding-top:0px;
+  border-style:solid;
+  border-width:5px;
+  border-color:gray;
+}
+#house-name{
+  display:inline;
+  color:white;
+}
+#house-type{
+
+  
+  display:inline;
+  float:right;
+  color:white;
+
+}
+
+
+#house-page-header{
+  background:gray;
+}
+
+#houseshield{
+  width:300px;
+  height:200px;
+}
+
+#shieldbox{
+  width:300px;
+  padding:0px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.ui-accordion .ui-accordion-header{
+  margin-top:0px !important;
+  color:gray !important;
+}
+
+.ui-state-default{
+  background:white !important;
+}
+
+
+table {
+  font: .75em sans-serif;
+  empty-cells:show;
+  border: none;
+}
+
+/* basic shared rules */
+table th,
+table td {
+  text-align: center;
+  padding:2em 5em 1em 2em;
+}
+
+table th {
+  color:#A8A8A8;
+}
+
+
+
+/* body */
+#accordion_labels td {
+  color:#F05A28;
+}
+
+table > thead > tr:first-child > th {
+  color:#0088cc !important;
+}
+
+
+#add-event-title{
+   width:100%;
+  text-align:center;
+  font-size:35px;
+  color:#007AA5;
+  padding-top:20px;
+  padding-bottom:40px;
+}
+
+
+
+#description{
+  height:100px;
+
+}
+
+#event-input, #event-label, #event-text-field{
+
+    float:left;
+    margin:1px;
+}
+
+#event_event_type, #event_start_time_5i, #event_start_time_4i, #event_start_time_3i,  #event_start_time_2i,  #event_start_time_1i, 
+{
+    
+    background: #0088cc;
+    color:white;
+    
+}
+
+#button-holder
+{
+  text-align:center;
+}
+
+
+#houselisttitle{
+  font-weight:bold;
+  text-align:center;
+  font-size:45px !important;
+  font-family:"Arial Verdana", Times, sans-serif;
+  padding-top: 10px;
+  color:#0088cc;
+}
+#houselist{
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+#houselistcontainer{
+  width:98%;
+  margin:1%;
+}
+
+#eachhouse{
+  background:white;
+ 
+  border-top: solid thick;
+  border-top-color:gray;
+
+}

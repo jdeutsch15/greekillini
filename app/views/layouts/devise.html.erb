@@ -11,16 +11,16 @@
 
   <body class="<%= controller_name %> <%= action_name %>">
     <div id="container" class="container">
-      <header>
+      <div id="titlepageheader">
 
-          <div id="header_left">
-          <ul id="nav_left">
-            <li id="title">GREEKILLINI</li>
+          <div id="home_header_left">
+          <ul id="home_nav_left">
+            <li id="home_title">GREEKILLINI</li>
             <li><%= link_to "Sign up", new_registration_path(resource_name) %></li>
          </ul>
      </div>
    <%= render "devise/sessions/new" %>
-      </header>
+      </div>
       <%= image_tag 'greekillini.jpg'%>
       <div id="main" role="main">
         <%= yield %>

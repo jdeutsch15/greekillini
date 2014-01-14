@@ -1,18 +1,11 @@
-<h1>Listing Houses</h1>
+<h1 id="houselisttitle">Houses</h1>
 <%if (@houses) then%>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>House Type</th>
-  
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="houselistcontainer">
+<table id="houselist">
 
 <% @houses.each do |house| %>
-  <tr>
+  
+  <tr id="eachhouse">
     <td><%= link_to house.name, house %></td>
     <td><%= house.house_type %></td>
     <div class="links">
@@ -22,6 +15,8 @@
     <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td></div>
     <%end%>
   </tr>
+
 <% end %>
 <% end %>
 </table>
+</div>

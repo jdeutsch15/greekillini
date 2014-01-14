@@ -10,33 +10,34 @@
 </head>
 
   <body class="<%= controller_name %> <%= action_name %>">
-    <div id="container" class="container">
-      <header>
-        <ul id="nav_whole">
-
-        <li id= "nav_whole_left"> 
-          <ul id="nav_left">
+    
+      <div id="header">
+      
+        <ul id="nav_left" >
             <li id="title">GREEKILLINI</li>
-             <li id="nav_messageboard"><%= link_to "message board", messages_path %>
+             <li><%= link_to "message board" , messages_path, :class=>"headerlinks" %>
              </li>
-              <li id="nav_houses">
-            <%= link_to "houses", houses_path %>
+              <li>
+            <%= link_to "houses", houses_path, :class=>"headerlinks" %>
              </li>
          </ul>
-      </li>
-      <li id="nav_whole_right">
-        <ul id="nav_right">
-          <li id="nav_messages">
+      
+      
+        <ul id="nav_right" >
+         <% if student_signed_in? %>
+          <li><%= link_to current_student.capitalize_name, student_path(current_student.id), :class=>"headerlinks" %><li>
+          <%end%>
+          <li id="li_line"> | </li>
+          <li>
          <%= render 'layouts/messages' %>
            </li>
-           <li id="nav_signing">
+           <li>
            <%= render 'layouts/navigation' %>
           </li>
-      
-       </ul>
-     </li>
+   
    </ul>
-      </header>
+      
+      </div>
       <div id="main" role="main">
         <%= yield %>
       </div>
@@ -44,6 +45,6 @@
       <footer>
 
       </footer>
-    </div> <!--! end of #container -->
+   
   </body>
 </html>

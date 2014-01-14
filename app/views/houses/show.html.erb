@@ -1,28 +1,33 @@
   <p id="notice"><%= notice %></p>
 
 
-	<p>
-<div id="housename">
+	
+<div id="house_box">
+<p id="housename">
   <%= @house.name %>
-  </div>
-</p>
+  </p></div>
 
 
+<div id="house-page-container">
+<div id="house-page-header">
+<div id="house-name"><b><%=@house.name%> Roster</b></div>
+<div id="house-type">
 
-<p>
-<div id="housetype">
+
   <%= @house.house_type %>
-</div>
-</p>
 
-<br>
-<br>
-<br>
-<p><b><%=@house.name%> Roster</b></p>
+
+
+</div>
+</div>
+<div id="shieldbox">
+	<img id="houseshield" src="" alt="Shield Thingy Goes Here">
+	</div>
+
 <div id ="accordion">
 	<h3>2013</h3>
 	<div>
-	<table id= "roster">
+	<table id="accordion_labels">
 	<tr>
 
 		<th>Name</th>
@@ -38,7 +43,7 @@
 		<td><%= student.email%></td>
 		<td><%= student.gender%></td>
 		<td><%= student.pledge_class%></td>
-		 <div class="links"><td><%= link_to 'View Person', student_path(student) %></td></div>
+		 <td><%= link_to 'View', student_path(student), :class=>"links"%></td>
 	</tr>
 	<%end%>
 	<% end %>
@@ -46,7 +51,7 @@
 </div>
 <h3>2014</h3>
 <div>
-	<table id= "roster">
+	<table id="accordion_labels">
 	
 	<tr>
 
@@ -62,7 +67,7 @@
 		<td><%= student.email%></td>
 		<td><%= student.gender%></td>
 		<td><%= student.pledge_class%></td>
-		 <div class="links"><td><%= link_to 'View Person', student_path(student) %></td></div>
+		 <td><%= link_to 'View', student_path(student), :class=>"links"%></td>
 	</tr>
 	<% end %>
 	<% end %>
@@ -70,7 +75,7 @@
 </div>
 <h3>2015</h3>
 <div>
-	<table id= "roster">
+	<table id="accordion_labels">
 	
 	<tr>
 
@@ -86,7 +91,7 @@
 		<td><%= student.email%></td>
 		<td><%= student.gender%></td>
 		<td><%= student.pledge_class%></td>
-		 <div class="links"><td><%= link_to 'View Person', student_path(student) %></td></div>
+		  <td><%= link_to 'View', student_path(student), :class=>"links"%></td></div>
 	</tr>
 	<% end %>
 	<% end %>
@@ -94,7 +99,7 @@
 </div>
 <h3>2016</h3>
 <div>
-	<table id= "roster">
+	<table id="accordion_labels">
 	
 	<tr>
 
@@ -106,10 +111,11 @@
 	<% @house.students.each do |student| %>
 	<% if student.pledge_class=="2016" then %>
 	<tr>
-		 <div class="links"><td><%= link_to student.capitalize_name, student_path(student) %></td></div>
+		 	<td><%= student.capitalize_name%></td>
 		<td><%= student.email%></td>
 		<td><%= student.gender%></td>
 		<td><%= student.pledge_class%></td>
+		 <td><%= link_to 'View', student_path(student), :class=>"links"%></td></div>
 		
 	</tr>
 	<% end %>
@@ -118,7 +124,7 @@
 </div>
 <h3>2017</h3>
 <div>
-	<table id= "roster">
+	<table >
 	
 	<tr>
 
@@ -130,7 +136,7 @@
 	<% @house.students.each do |student| %>
 	<% if student.pledge_class=="2017" then %>
 	<tr>
-		<td><%= student.capitalize_name%></td>
+			<td><%= student.capitalize_name%></td>
 		<td><%= student.email%></td>
 		<td><%= student.gender%></td>
 		<td><%= student.pledge_class%></td>
@@ -139,6 +145,7 @@
 	<% end %>
 	<% end %>
 </table>
+</div>
 </div>
 </div>
 <br />
@@ -171,16 +178,16 @@
 	
 	<%end%>
 </table>
-
+</div>
 <br>
 <br>
-<table id="events">
+<table id="table_events">
 	<th>Event Information</th>
 	
 	<%= calendar @house.events do |event| %>
 	<%if @house==current_student.house then%>
    <div class="eventlinks"><div> <%=link_to event.name, event %></div></div>
-  <div><%= event.start_time.time.to_s(:time) %></div>
+  <div>Start Time: <%= event.start_time.time.to_s(:time) %></div>
 <%else%>
  <div class="eventlinks"><div> Unavailable</div></div>
   <div><%= event.start_time.time.to_s(:time)   %></div>
@@ -190,23 +197,25 @@
 	<% if current_student.house==@house then %>
 	<% if current_student.role=="social_chair" then%>
 	<div class="form">
+	<div id ="add-event-title">Add Event</div>
 	<%= form_for Event.new, :remote => true do|f| %>
-		<%=f.label :name, "Name" %><br />
-		<%=f.text_field :name, :id => "name" %><br />
-		<%=f.label :location, "Location" %><br />
-		<%=f.text_field :location, :id => "location" %><br />
-		<%=f.label :description, "Description" %><br />
-		<%=f.text_field :description, :id => "description"%><br />
-		<%=f.label :start_time, "Date"%><br />
-		<%=f.date_select :start_time %><br />
-		<%=f.label :start_time, "Time"%><br />
-		<%=f.time_select :start_time, :ignore_date => true %><br />
-		<%=f.label :event_type, "Type" %><br />
-		<%=f.select :event_type, ["Pregame", "Exchange", "Philanthropy"]%><br />
+		<%=f.label :name, "Name", :id=>"event-label" %><br />
+		<%=f.text_field :name, :id => "event-text-field" %><br />
+		<%=f.label :location, "Location", :id=>"event-label" %><br />
+		<%=f.text_field :location, :id => "event-text-field"%><br />
+		<%=f.label :description, "Description", :id=>"event-label" %><br />
+		<%=f.text_area :description, :id => "description"%><br />
+		<%=f.label :start_time, "Date", :id=>"event-label"%><br />
+		<%=f.date_select :start_time, :class=>"event-select"%><br />
+		<%=f.label :start_time, "Time", :id=>"event-label"%><br />
+		<%=f.time_select :start_time, :ignore_date => true, :class=>"event-select" %><br />
+		<%=f.label :event_type, "Type", :id=>"event-label"%><br />
+		<%=f.select :event_type, ["Pregame", "Exchange", "Philanthropy"], :class=>"event-select"%><br />
 		<%= f.hidden_field :house_id, :value => @house.id %><br />
 	
 		<br>
-		<%= f.submit "Add Event" %>
+		<div id="button-holder">
+		<%= f.submit "Add Event", :id=>"add-event"%></div>
 	<%end%>
 </div>
 	<%end%>

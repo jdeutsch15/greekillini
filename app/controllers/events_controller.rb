@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 	 before_filter :authenticate_student!
-   before_filter :only_allow_social_chair, :only => [:create]
+   #before_filter :only_allow_social_chair, :only => [:create]
    def index
     @events = Event.all
 
